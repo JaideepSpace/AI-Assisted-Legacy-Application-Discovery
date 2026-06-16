@@ -80,19 +80,33 @@ This approach helps improve accuracy, traceability, and relevance while reducing
 
 PROTOTYPE IMPLEMENTATION
 ========================
-The original objective was to evaluate an AI agent architecture using enterprise documentation as a knowledge source.
-Due to platform access limitations, a full enterprise agent implementation was not developed.
-Instead, NotebookLM was used as a proof-of-concept environment to simulate key Retrieval-Augmented Generation (RAG) capabilities.
 
-The prototype allowed evaluation of:
-• Document-grounded responses
-• Knowledge retrieval behaviour
-• Multi-document analysis
+The original objective was to evaluate how an AI-assisted knowledge retrieval capability could support application discovery, business rule analysis, impact assessment, and modernization activities using enterprise documentation as the primary knowledge source.
+
+As an initial proof-of-concept, Google NotebookLM was used as the evaluation platform to explore key Retrieval-Augmented Generation (RAG) concepts within a controlled environment.
+
+A synthetic enterprise knowledge repository was created using representative application documentation, program inventories, data lineage records, incident history, and vendor documentation. These knowledge sources were loaded into NotebookLM to simulate an AI-assisted discovery and analysis capability.
+
+The prototype evaluated the ability of AI to retrieve, correlate, and synthesize information across multiple independent knowledge sources rather than relying solely on the foundation model's general knowledge.
+
+The evaluation focused on determining whether AI could provide source-grounded responses to business and operational questions related to:
+
+• Application discovery
+• Business rule identification
+• Impact analysis
+• Data lineage analysis
+• Modernization assessment
+• Knowledge transfer
+
+The prototype also assessed:
+• Multi-document knowledge retrieval
+• Cross-document relationship discovery
 • Source traceability
-• Business question answering
-• Application discovery scenarios
+• Response relevance
+• Knowledge accessibility
 
-The prototype was used to validate the overall concept and assess potential enterprise value.
+The findings demonstrated that AI-assisted knowledge retrieval can significantly improve access to operational and application knowledge within large legacy environments while highlighting the importance of documentation quality, governance controls, and human validation for enterprise adoption.
+
 
 REPRESENTATIVE USE CASES
 =======================
@@ -124,13 +138,6 @@ Example Question:
 "Where is taxpayer status created, updated, and consumed?"
 Expected Outcome:
 Visibility into upstream and downstream data flows.
-
-Production Support Investigation
------------------------------------
-Example Question:
-"A batch failure occurred during refund processing. What downstream services may be affected?"
-Expected Outcome:
-Identification of dependencies, operational risks, and recovery considerations.
 
 MODERNIZATION SUPPORT
 =====================
