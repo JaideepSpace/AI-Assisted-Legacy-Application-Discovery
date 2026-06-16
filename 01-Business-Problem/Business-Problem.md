@@ -1,117 +1,158 @@
-Business Problem
-================
+BUSINESS PROBLEM
+BACKGROUND
+==========
 
-Background
-----------
+The Tax Processing Platform (TPP) is a mission-critical government revenue system responsible for supporting the end-to-end administration of taxpayer services.
 
-The Tax Processing Platform (TPP) is a mission-critical government revenue system responsible for tax return processing, taxpayer account maintenance, compliance validation, refund calculation, payment processing, audit support, and regulatory reporting.
+The platform processes tax returns, maintains taxpayer accounts, calculates penalties and interest, manages refund processing, supports compliance activities, and generates regulatory and management reporting required by the tax authority.
 
-The platform consists of more than 700 COBOL components, including both online and batch-processing modules, along with copybooks, JCL, DB2 objects, interfaces, and operational procedures.
+Over many years, the platform has evolved into a large and complex ecosystem consisting of more than 700 vendor-supplied COBOL modules, online transactions, batch workloads, copybooks, database objects, interfaces, operational procedures, and supporting documentation.
 
-Application development and maintenance are performed by an external software vendor. Internal teams are responsible for implementation, production support, release management, operational stability, and modernization planning.
+Application development and maintenance activities are performed by an external software vendor. Internal teams are responsible for implementation, production support, release coordination, operational stability, incident management, testing, and modernization planning.
 
-Over time, significant business and technical knowledge has become distributed across source code, vendor documentation, release notes, operational runbooks, incident records, and support procedures.
+As a result, critical business and technical knowledge is distributed across multiple knowledge sources including source code, vendor documentation, operational runbooks, release notes, batch schedules, incident records, and implementation guides.
 
-As a result, obtaining a complete understanding of application behavior often requires extensive investigation across multiple knowledge sources.
+Obtaining a complete understanding of application behaviour often requires significant investigation and consultation with experienced subject matter experts.
 
-
-Current Challenges
-==================
-
-Challenge 1 – Business Rule Discovery
--------------------------------------
-Critical tax-processing rules are embedded within hundreds of COBOL modules and supporting documentation.
+CURRENT STATE CHALLENGES
+BUSINESS RULE DISCOVERY
+=======================
+Many critical tax-processing rules are embedded within COBOL programs and supporting vendor documentation.
 
 Examples include:
-* Tax liability calculation
-* Refund eligibility determination
-* Penalty assessment
-* Interest calculation
-* Compliance validation
 
-Understanding these rules frequently requires detailed code analysis and consultation with vendor specialists.
+• Tax liability calculations
+• Penalty assessment logic
+• Interest calculation rules
+• Refund eligibility determination
+• Compliance validation checks
+• Taxpayer account adjustment processing
+Understanding how these rules are implemented frequently requires analysis of multiple programs, copybooks, and technical documents.
 
-Challenge 2 – Change Impact Analysis
-------------------------------------
-Regulatory and legislative changes occur regularly and often require modifications across multiple online and batch-processing components.
+This creates challenges for business analysts, support teams, testers, and modernization initiatives that require a clear understanding of business functionality.
 
-Determining the full impact of a change requires identification of:
-* Affected COBOL modules
-* Batch jobs
-* Online transactions
-* Interfaces
-* Reports
-* Database objects
-* Downstream business processes
-
-This analysis is largely manual and dependent on SME knowledge.
-
-Challenge 3 – Application Discovery
------------------------------------
-The platform contains hundreds of interconnected components developed over many years.
-
-Operational and project teams often need answers to questions such as:
-* Which modules perform refund calculations?
-* Which programs update taxpayer accounts?
-* What business functions are supported by a specific component?
-* Which batch streams are involved in annual tax processing?
-
-Finding these answers can be time-consuming and inconsistent.
-
-Challenge 4 – Data Lineage Visibility
--------------------------------------
-Taxpayer information flows through numerous online transactions, batch processes, interfaces, and reporting systems.
-
-Understanding how a particular data element is created, updated, transformed, and consumed across the platform requires investigation of multiple technical artifacts.
-
-Limited visibility increases risk during change implementation and modernization activities.
-
----
-
-Challenge 5 – SME Dependency
-----------------------------
-Knowledge of application behavior is concentrated among a small number of experienced personnel and vendor specialists.
-
-This creates challenges related to:
-* Knowledge transfer
-* Staff turnover
-* Incident response
-* Change implementation
-* Modernization planning
-
-Challenge 6 – Production Support Efficiency
-------------------------------------------
-During production incidents, support teams often need to quickly determine:
-* Business impact
-* Upstream and downstream dependencies
-* Recovery options
-* Affected taxpayer services
-* Potential regulatory impacts
-
-Relevant information is typically spread across multiple documents and systems.
-
-Challenge 7 – Modernization Planning
-------------------------------------
-The organization requires improved visibility into application complexity, technical debt, business functionality, and system dependencies to support future modernization initiatives.
-
-Current assessment activities require significant manual effort and extensive SME involvement.
-
-Desired Future State
+APPLICATION DISCOVERY
 ====================
-Establish an AI-assisted knowledge discovery capability that enables operational teams, analysts, architects, modernization teams, and business stakeholders to retrieve and analyze information across technical and business artifacts using natural language queries.
+The platform contains hundreds of interconnected application components supporting various tax administration functions.
 
-The solution should support:
-* Application discovery
-* Business rule extraction
-* Change impact assessment
-* Data lineage analysis
-* Production support investigations
-* Modernization planning
-* Knowledge management
+Operational and project teams regularly require answers to questions such as:
 
-while maintaining appropriate governance controls and human validation processes.
+• Which programs support refund processing?
+• Which modules update taxpayer balances?
+• What business function does a specific program perform?
+• Which batch streams participate in annual tax return processing?
+• Which online transactions are associated with a particular business process?
 
-Project Objective
+Answering these questions often requires manual investigation across multiple documentation sources.
+
+CHANGE IMPACT ANALYSIS
+======================
+Legislative and regulatory changes are a normal part of the tax administration lifecycle.
+
+A seemingly simple business change may impact:
+
+• COBOL programs
+• Online transactions
+• Batch jobs
+• Database structures
+• Reports
+• Interfaces
+• Testing activities
+Identifying the complete scope of impact is often time-consuming and dependent on specialist knowledge.
+
+Incomplete impact analysis increases delivery risk and can lead to production issues following implementation.
+
+DATA LINEAGE VISIBILITY
+========================
+Critical taxpayer information moves through numerous online and batch-processing components throughout the platform.
+
+Understanding where data originates, how it is transformed, and where it is ultimately consumed can be difficult due to the scale and complexity of the environment.
+
+Limited visibility into data lineage creates challenges for:
+
+• Regulatory compliance
+• Production support
+• Testing
+• Change implementation
+• Modernization planning
+• Audit activities
+
+SME DEPENDENCY
+==============
+Knowledge of system behaviour is often concentrated among a relatively small number of experienced personnel.
+
+Operational support teams frequently depend on long-serving subject matter experts to answer questions related to:
+
+• Business functionality
+• Program behaviour
+• Data flows
+• Operational dependencies
+• Recovery procedures
+• Historical implementation decisions
+This dependency introduces operational risk and creates challenges for knowledge transfer and staff onboarding.
+
+PRODUCTION SUPPORT CHALLENGES
+=============================
+During production incidents, support teams must rapidly determine:
+
+• Business impact
+• Affected taxpayer services
+• Upstream and downstream dependencies
+• Recovery options
+• Potential operational risks
+Relevant information is typically distributed across multiple documentation sources and often requires consultation with experienced personnel before decisions can be made.
+
+The investigation process can be time-consuming during high-priority incidents where rapid response is essential.
+
+MODERNIZATION CHALLENGES
+========================
+The organization requires improved visibility into application functionality, dependencies, technical complexity, and business processes to support future modernization initiatives.
+
+Current discovery and assessment activities involve significant manual effort and require extensive analysis of technical artifacts.
+
+The lack of centralized knowledge increases both cost and risk during transformation programmes.
+
+DESIRED FUTURE STATE
+=====================
+The desired future state is an AI-assisted knowledge discovery capability that enables operational teams, analysts, architects, modernization teams, testers, and business stakeholders to retrieve information using natural language queries.
+
+Rather than searching across numerous documents and technical artifacts, users should be able to ask business and operational questions and receive source-grounded responses based on available enterprise knowledge.
+
+Examples include:
+
+• Which modules calculate taxpayer penalties?
+• What systems are impacted by a legislative change?
+• Which jobs participate in refund processing?
+• Where is a specific taxpayer data element used?
+• What business processes depend on a particular application component?
+• What testing may be required for a proposed change?
+
+PROJECT OBJECTIVE
 =================
-Evaluate whether Generative AI and Retrieval-Augmented Generation (RAG) concepts can improve access to operational and application knowledge within a large-scale tax processing environment by providing source-grounded responses based on existing documentation and application artifacts.
-Evaluate whether Generative AI and Retrieval-Augmented Generation (RAG) concepts can improve access to operational and application knowledge within a large-scale tax processing environment by providing source-grounded responses based on existing documentation and application artifacts.
+The objective of this proof-of-concept is to evaluate how Generative AI and knowledge retrieval techniques can improve access to operational and application knowledge within a large-scale tax processing environment.
+
+The evaluation focuses on the ability of AI-assisted knowledge retrieval to support:
+
+• Application discovery
+• Business rule identification
+• Impact analysis
+• Data lineage investigation
+• Production support activities
+• Knowledge transfer
+• Modernization planning
+while maintaining appropriate governance controls, human oversight, and operational accountability.
+
+EXPECTED BENEFITS
+===================
+Successful implementation of an AI-assisted knowledge retrieval capability has the potential to:
+
+• Reduce time spent searching for information
+• Improve access to institutional knowledge
+• Accelerate impact analysis activities
+• Support faster incident investigation
+• Improve onboarding and knowledge transfer
+• Reduce dependency on individual subject matter experts
+• Assist modernization and transformation initiatives
+• Improve visibility into application behaviour and dependencies
+
+The long-term vision is to transform fragmented technical and operational knowledge into a searchable enterprise knowledge capability that supports informed decision-making across the organization.
